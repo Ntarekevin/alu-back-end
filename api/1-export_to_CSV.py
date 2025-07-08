@@ -18,35 +18,29 @@ if __name__ == "__main__":
     except ValueError:
         sys.exit(1)
 
-    # Fetch user info
+    # Get user info
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     user_resp = requests.get(user_url)
-
     if user_resp.status_code != 200:
         sys.exit(1)
 
     user_data = user_resp.json()
     username = user_data.get("username")
 
-    # Fetch todos
-    todos_url = (
-        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    )
+    # Get todos
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     todos_resp = requests.get(todos_url)
-
     if todos_resp.status_code != 200:
         sys.exit(1)
 
     todos = todos_resp.json()
 
-    # Write to CSV
+    # Write CSV
     filename = f"{employee_id}.csv"
     with open(filename, "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todos:
             writer.writerow([
-                employee_id,
+                str(employee_id),
                 username,
-                str(task.get("completed")),
-                task.get("title")
-            ])
+                str(task.get
