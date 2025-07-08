@@ -4,8 +4,8 @@ Exports all tasks owned by an employee to a CSV file using JSONPlaceholder API.
 """
 
 import csv
-import requests
 import sys
+import requests
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -21,20 +21,22 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Fetch user info
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    user_url = (
+        f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    )
     user_resp = requests.get(user_url)
 
     if user_resp.status_code != 200:
-        print("User not found.")
         sys.exit(1)
 
     user_data = user_resp.json()
     username = user_data.get("username")
 
-    # Fetch todos only after confirming user exists
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    # Fetch todos
+    todos_url = (
+        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    )
     todos_resp = requests.get(todos_url)
-
     todos = todos_resp.json()
 
     # Write to CSV
