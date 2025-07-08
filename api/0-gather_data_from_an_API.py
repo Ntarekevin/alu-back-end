@@ -22,8 +22,12 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Define base URLs
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    user_url = (
+        f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    )
+    todos_url = (
+        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    )
 
     # Fetch user information
     user_response = requests.get(user_url)
@@ -44,6 +48,9 @@ if __name__ == "__main__":
     num_done_tasks = len(done_tasks)
 
     # Output
-    print(f"Employee {employee_name} is done with tasks({num_done_tasks}/{total_tasks}):")
+    print(
+        f"Employee {employee_name} is done with tasks"
+        f"({num_done_tasks}/{total_tasks}):"
+    )
     for task in done_tasks:
         print(f"\t {task.get('title')}")
