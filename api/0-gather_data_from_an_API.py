@@ -1,8 +1,16 @@
 #!/usr/bin/python3
+"""
+This script fetches and displays the TODO list progress for a given employee ID
+using the JSONPlaceholder REST API.
+"""
 import requests
 import sys
 
+
 def get_employee_todo_progress(employee_id):
+    """
+    Fetches the employee’s TODO list and displays progress.
+    """
     try:
         # Fetch employee details
         user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
@@ -17,13 +25,12 @@ def get_employee_todo_progress(employee_id):
         todos_response.raise_for_status()
         todos = todos_response.json()
 
-        # Filter completed tasks
-        completed_tasks = [task for task in todos if task.get('completed')]
-
-        # Output
+        # Count total and completed tasks
         total_tasks = len(todos)
+        completed_tasks = [task for task in todos if task.get('completed')]
         done_tasks = len(completed_tasks)
 
+        # Display progress
         print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
         for task in completed_tasks:
             print(f"\t {task.get('title')}")
@@ -32,8 +39,11 @@ def get_employee_todo_progress(employee_id):
         print("Error while connecting to the API:", e)
     except ValueError:
         print("Invalid response format.")
-    except IndexError:
-        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+    except KeyError:
+        print("Unexpected data structure.")
+    except Exception as e:
+        print("Unexpected error occurred:", e)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
