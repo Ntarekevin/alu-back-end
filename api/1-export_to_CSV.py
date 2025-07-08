@@ -20,15 +20,9 @@ if __name__ == "__main__":
         print("Employee ID must be an integer.")
         sys.exit(1)
 
-    user_url = (
-        f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    )
-    todos_url = (
-        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    )
-
+    # Fetch user info
+    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     user_resp = requests.get(user_url)
-    todos_resp = requests.get(todos_url)
 
     if user_resp.status_code != 200:
         print("User not found.")
@@ -37,16 +31,20 @@ if __name__ == "__main__":
     user_data = user_resp.json()
     username = user_data.get("username")
 
+    # Fetch todos only after confirming user exists
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    todos_resp = requests.get(todos_url)
+
     todos = todos_resp.json()
 
+    # Write to CSV
     filename = f"{employee_id}.csv"
-    with open(filename, mode='w', newline='') as csvfile:
+    with open(filename, mode="w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-
         for task in todos:
             writer.writerow([
                 employee_id,
                 username,
-                str(task.get("completed")),
+                task.get("completed"),
                 task.get("title")
             ])
