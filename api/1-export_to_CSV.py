@@ -10,7 +10,7 @@ def fetch_user_info(user_id):
     response = requests.get(
         f"https://jsonplaceholder.typicode.com/users/{user_id}"
     )
-    response.raise_for_status()  # Raise an error for bad responses
+    response.raise_for_status()
     return response.json()
 
 def fetch_user_todos(user_id):
@@ -19,7 +19,7 @@ def fetch_user_todos(user_id):
         f"https://jsonplaceholder.typicode.com/todos",
         params={"userId": user_id}
     )
-    response.raise_for_status()  # Raise an error for bad responses
+    response.raise_for_status()
     return response.json()
 
 def write_to_csv(user_id, username, todos):
@@ -46,3 +46,4 @@ if __name__ == "__main__":
             print(f"An error occurred: {e}")
     else:
         print("Usage: python script.py <user_id>")
+        
