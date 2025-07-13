@@ -13,7 +13,10 @@ if __name__ == "__main__":
 
     employee_id = int(sys.argv[1])
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    todos_url = (
+        "https://jsonplaceholder.typicode.com/todos?"
+        f"userId={employee_id}"
+    )
 
     user_response = requests.get(user_url)
     if user_response.status_code != 200:
