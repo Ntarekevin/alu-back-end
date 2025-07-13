@@ -2,7 +2,6 @@
 """
 Exports all tasks for a given employee ID to a JSON file.
 """
-
 import json
 import requests
 import sys
@@ -14,9 +13,7 @@ if __name__ == "__main__":
 
     employee_id = int(sys.argv[1])
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = (
-        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    )
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
 
     user_response = requests.get(user_url)
     if user_response.status_code != 200:
@@ -24,7 +21,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     username = user_response.json().get("username")
-
     todos_response = requests.get(todos_url)
     todos = todos_response.json()
 
