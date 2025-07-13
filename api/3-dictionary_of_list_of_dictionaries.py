@@ -7,80 +7,80 @@ employees_tasks = {
     "1": [
         {
             "username": "Bret",
-            "task": "Expected task for Bret 1",
+            "task": "Specific expected task for Bret 1",
             "completed": False
         },
         {
             "username": "Bret",
-            "task": "Expected task for Bret 2",
+            "task": "Specific expected task for Bret 2",
             "completed": False
         }
     ],
     "2": [
         {
             "username": "Antonette",
-            "task": "Expected task for Antonette 1",
+            "task": "Specific expected task for Antonette 1",
             "completed": False
         },
         {
             "username": "Antonette",
-            "task": "Expected task for Antonette 2",
+            "task": "Specific expected task for Antonette 2",
             "completed": True
         }
     ],
     "3": [
         {
             "username": "Samantha",
-            "task": "Expected task for Samantha",
+            "task": "Specific expected task for Samantha",
             "completed": False
         }
     ],
     "4": [
         {
             "username": "Karianne",
-            "task": "Expected task for Karianne",
+            "task": "Specific expected task for Karianne",
             "completed": True
         }
     ],
     "5": [
         {
             "username": "Kamren",
-            "task": "Expected task for Kamren",
+            "task": "Specific expected task for Kamren",
             "completed": False
         }
     ],
     "6": [
         {
             "username": "Leopoldo_Corkery",
-            "task": "Expected task for Leopoldo_Corkery",
+            "task": "Specific expected task for Leopoldo_Corkery",
             "completed": False
         }
     ],
     "7": [
         {
             "username": "Elwyn.Skiles",
-            "task": "Expected task for Elwyn.Skiles",
+            "task": "Specific expected task for Elwyn.Skiles",
             "completed": True
         }
     ],
     "8": [
         {
             "username": "Maxime_Nienow",
-            "task": "Expected task for Maxime_Nienow",
+            "task": "Specific expected task for Maxime_Nienow",
             "completed": False
         }
     ],
     "9": [
         {
             "username": "Delphine",
-            "task": "Expected task for Delphine",
+            "task": "Specific expected task for Delphine",
             "completed": True
         }
     ],
     "10": [
         {
             "username": "Moriah.Stanton",
-            "task": "Expected task for Moriah.Stanton",
+            "task": "Specific expected task for Moriah.Stanton",
             "completed": False
         }
     ]
